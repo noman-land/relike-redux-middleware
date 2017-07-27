@@ -34,7 +34,7 @@
   "dependencies": {
     "babel-register": "^6.24.1",
     "redux-actions": "^2.2.1",
-    "relike-utils": "file:../relike-utils"
+    "relike-utils": "^0.2.6"
   },
   "repository": {
     "type": "git",
