@@ -6,6 +6,8 @@ Redux middleware for interfacing with ReLike, the decentralized public liking se
 
 This middleware uses `ReLikeUtils` under the hood to send transactions to the ReLike smart contract on Ethereum. Please see documentation for [`ReLikeUtils` on GitHub](https://github.com/noman-land/relike-utils).
 
+To install the middleware, simply import it and add it to your list of middlewares.
+
 ```js
 import { applyMiddleware, createStore } from 'redux';
 import ReLikeMiddleware from 'relike-redux-middleware';
@@ -21,7 +23,60 @@ const store = createStore(
 
 The middleware will dispatch actions that are prefixed with `@@RELIKE/`.
 
-This library exports a set of "meta actions" that will trigger the middleware to dispatch a series of start and success/error actions. These meta actions can be passed to components via a connected container, in idiomatic Redux style:
+This library exports a set of "meta actions" that will trigger the middleware to dispatch a series of start and success/error actions.
+
+Here's an example meta action, which uses `Date.now()` to add its a timestamp when it's called:
+
+```js
+const action = {
+  type: '@@RELIKE/LIKE',
+  payload: {
+    entityId: 'ReLike',
+    timestamp: 1501802668772,
+  },
+}
+```
+
+The middleware swallows the meta action and dispatches a "start" action, like so:
+
+```js
+const startAction = {
+  type: '@@RELIKE/LIKE_START',
+  payload: {
+    entityId: 'ReLike',
+    timestamp: 1501802668772,
+  },
+};
+```
+
+This is followed by a success or error action, depending on if the transaction is successful or not:
+
+```js
+const successAction = {
+  type: '@@RELIKE/LIKE_SUCCESS',
+  meta: {
+    entityId: 'ReLike',
+    timestamp: 1501802668772,
+  },
+  payload: {
+    result: { /* transaction object */ },
+  },
+};
+
+// or
+
+const errorAction = {
+  error: true,
+  type: '@@RELIKE/LIKE_ERROR',
+  meta: {
+    entityId: 'ReLike',
+    timestamp: 1501802668772,
+  },
+  payload: { /* Error object */ },
+};
+````
+
+These meta actions can be passed to components via a connected container, in idiomatic Redux style:
 
 ```js
 // MyContainer.js
