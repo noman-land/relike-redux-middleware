@@ -19,7 +19,7 @@ const store = createStore(
 
 The middleware will dispatch actions that are prefixed with `@@RELIKE/`.
 
-You can import ReLike actions from `relike-redux-middleware` to dispatch from your app. You can pass them to components via a connected container, in idiomatic Redux style:
+This library exports a set of "meta actions" that will trigger the middleware to dispatch a series of start and success/error actions. These meta actions can be passed to components via a connected container, in idiomatic Redux style:
 
 ```js
 // MyContainer.js
@@ -41,9 +41,9 @@ export default connect(null, mapDispatchToProps)(MyComponent);
 
 ```
 
-For a full list of actions please see [`ReLikeMetaActions.js`](https://github.com/noman-land/relike-redux-middleware/blob/master/js/redux/actions/ReLikeMetaActions.js).
+For a full list of meta actions please see [`ReLikeMetaActions.js`](https://github.com/noman-land/relike-redux-middleware/blob/master/js/redux/actions/ReLikeMetaActions.js).
 
-To handle the actions in your reducers, `relike-redux-middleware` exports a `ReLikeActionTypes` object:
+To handle the individual actions in your reducers, This library exports a `ReLikeActionTypes` object:
 
 ```js
 import { Map } from 'immutable';
