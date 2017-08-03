@@ -1,5 +1,7 @@
 # ReLikeMiddleware
 
+[![npm version](https://badge.fury.io/js/relike-redux-middleware.svg)](https://badge.fury.io/js/relike-redux-middleware)
+
 Redux middleware for interfacing with ReLike, the decentralized public liking service, powered by Ethereum.
 
 ### Documentation
