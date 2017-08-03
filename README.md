@@ -24,23 +24,23 @@ You can import ReLike actions from `relike-redux-middleware` to dispatch from yo
 ```js
 // MyContainer.js
 import { connect } from 'react-redux';
-import { ReLikeActions } from 'relike-redux-middleware;'
+import { ReLikeMetaActions } from 'relike-redux-middleware;'
 
 import MyComponent from '../components/MyComponent';
 
 const mapDispatchToProps = {
-  dislike: ReLikeActions.dislike,
-  getLikeData: ReLikeActions.getLikeData,
-  like: ReLikeActions.like,
-  unDislike: ReLikeActions.unDislike,
-  unLike: ReLikeActions.unLike,
+  dislike: ReLikeMetaActions.dislike,
+  getLikeData: ReLikeMetaActions.getLikeData,
+  like: ReLikeMetaActions.like,
+  unDislike: ReLikeMetaActions.unDislike,
+  unLike: ReLikeMetaActions.unLike,
 };
 
 export default connect(null, mapDispatchToProps)(MyComponent);
 
 ```
 
-For a full list of actions please see [`ReLikeActions.js`](https://github.com/noman-land/relike-redux-middleware/blob/master/js/redux/actions/ReLikeActions.js).
+For a full list of actions please see [`ReLikeMetaActions.js`](https://github.com/noman-land/relike-redux-middleware/blob/master/js/redux/actions/ReLikeActions.js).
 
 To handle the actions in your reducers, `relike-redux-middleware` exports a `ReLikeActionTypes` object:
 
@@ -58,4 +58,4 @@ export default function pendingLikes(state = Map(), action) {
 }
 ```
 
-For a full list of action types please see [`ReLikeActionTypes.js`](https://github.com/noman-land/relike-redux-middleware/blob/master/js/redux/actions/ReLikeActionTypes.js).
+For a full list of action types please see [`actionTypes.js`](https://github.com/noman-land/relike-redux-middleware/blob/master/js/redux/actions/ReLikeActionTypes.js).

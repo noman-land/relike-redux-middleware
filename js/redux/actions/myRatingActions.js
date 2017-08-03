@@ -1,6 +1,6 @@
 import { createAction } from 'redux-actions';
 
-import actionTypes from './ReLikeActionTypes';
+import actionTypes from './actionTypes';
 
 export const getMyRatingError = createAction(
   actionTypes.GET_MY_RATING_ERROR,

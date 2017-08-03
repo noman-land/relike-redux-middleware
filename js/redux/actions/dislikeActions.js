@@ -1,6 +1,6 @@
 import { createAction } from 'redux-actions';
 
-import actionTypes from './ReLikeActionTypes';
+import actionTypes from './actionTypes';
 
 export const dislikeError = createAction(
   actionTypes.DISLIKE_ERROR,

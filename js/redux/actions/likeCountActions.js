@@ -1,6 +1,6 @@
 import { createAction } from 'redux-actions';
 
-import actionTypes from './ReLikeActionTypes';
+import actionTypes from './actionTypes';
 
 export const getLikeCountError = createAction(
   actionTypes.GET_LIKE_COUNT_ERROR,

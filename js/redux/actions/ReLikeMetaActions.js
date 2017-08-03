@@ -1,11 +1,6 @@
 import { createAction } from 'redux-actions';
 
-import actionTypes from './ReLikeActionTypes';
-
-import * as dislikeActions from './dislikeActions';
-import * as likeActions from './likeActions';
-import * as unDislikeActions from './unDislikeActions';
-import * as unLikeActions from './unLikeActions';
+import actionTypes from './actionTypes';
 
 export const accountChangedEvent = createAction(
   actionTypes.ACCOUNT_CHANGED_EVENT,
@@ -55,15 +50,11 @@ export const unLike = createAction(
 export default {
   accountChangedEvent,
   dislike,
-  dislikeActions,
   getLikeCount,
   getLikeData,
   getMyRating,
   like,
-  likeActions,
   newLikeEvent,
   unDislike,
-  unDislikeActions,
   unLike,
-  unLikeActions,
 };
