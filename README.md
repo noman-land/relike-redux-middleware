@@ -30,7 +30,8 @@ import MyComponent from '../components/MyComponent';
 
 const mapDispatchToProps = {
   dislike: ReLikeMetaActions.dislike,
-  getLikeData: ReLikeMetaActions.getLikeData,
+  getLikeCount: ReLikeMetaActions.getLikeCount,
+  getMyRating: ReLikeMetaActions.getMyRating,
   like: ReLikeMetaActions.like,
   unDislike: ReLikeMetaActions.unDislike,
   unLike: ReLikeMetaActions.unLike,
@@ -46,14 +47,14 @@ To handle the actions in your reducers, `relike-redux-middleware` exports a `ReL
 
 ```js
 import { Map } from 'immutable';
-import { ReLikeMetaActionTypes } from 'relike-redux-middleware';
+import { ReLikeActionTypes } from 'relike-redux-middleware';
 
 export default function pendingLikes(state = Map(), action) {
   switch (action.type) {
-    case ReLikeMetaActionTypes.LIKE_START:
+    case ReLikeActionTypes.LIKE_START:
       return state.set(action.payload.entityId, true);
-    case ReLikeMetaActionTypes.LIKE_ERROR:
-    case ReLikeMetaActionTypes.LIKE_SUCCESS:
+    case ReLikeActionTypes.LIKE_ERROR:
+    case ReLikeActionTypes.LIKE_SUCCESS:
       return state.set(action.payload.entityId, false);
     default:
       return state;
