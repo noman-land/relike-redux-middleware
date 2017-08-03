@@ -2,7 +2,7 @@ import ReLikeUtils from 'relike-utils';
 
 import actionTypes from '../actions/actionTypes';
 
-import { newLikeEvent, accountChangedEvent } from '../actions/ReLikeMetaActions';
+import { newLikeEvent, accountChangedEvent } from '../actions/eventActions';
 
 import reLikeAsyncActionCreator from '../actions/asyncActions/reLikeAsyncActionCreator';
 
