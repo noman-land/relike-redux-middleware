@@ -40,7 +40,7 @@ export default connect(null, mapDispatchToProps)(MyComponent);
 
 ```
 
-For a full list of actions please see [`ReLikeMetaActions.js`](https://github.com/noman-land/relike-redux-middleware/blob/master/js/redux/actions/ReLikeActions.js).
+For a full list of actions please see [`ReLikeMetaActions.js`](https://github.com/noman-land/relike-redux-middleware/blob/master/js/redux/actions/ReLikeMetaActions.js).
 
 To handle the actions in your reducers, `relike-redux-middleware` exports a `ReLikeActionTypes` object:
 
@@ -58,4 +58,4 @@ export default function pendingLikes(state = Map(), action) {
 }
 ```
 
-For a full list of action types please see [`actionTypes.js`](https://github.com/noman-land/relike-redux-middleware/blob/master/js/redux/actions/ReLikeActionTypes.js).
+For a full list of action types please see [`actionTypes.js`](https://github.com/noman-land/relike-redux-middleware/blob/master/js/redux/actions/actionTypes.js).
