@@ -6,6 +6,8 @@ Redux middleware for interfacing with ReLike, the decentralized public liking se
 
 This middleware uses `ReLikeUtils` under the hood to send transactions to the ReLike smart contract on Ethereum. Please see documentation for [`ReLikeUtils` on GitHub](https://github.com/noman-land/relike-utils).
 
+#### Installation
+
 To install the middleware, simply import it and add it to your list of middlewares.
 
 ```js
@@ -23,9 +25,11 @@ const store = createStore(
 
 The middleware will dispatch actions that are prefixed with `@@RELIKE/`.
 
-This library exports a set of "meta actions" that will trigger the middleware to dispatch a series of start and success/error actions.
+#### Meta Actions
 
-Here's an example meta action, which uses `Date.now()` to add its a timestamp when it's called:
+This library exports a set of "meta actions" that you will use to trigger the middleware to cause a transaction on the ReLike service and dispatch a series of start and success/error actions.
+
+Here's an example meta action, which uses `Date.now()` to add a timestamp when it creates the action, so you can identify it later:
 
 ```js
 const action = {
@@ -76,6 +80,8 @@ const errorAction = {
 };
 ````
 
+#### Passing actions to components
+
 These meta actions can be passed to components via a connected container, in idiomatic Redux style:
 
 ```js
@@ -100,7 +106,9 @@ export default connect(null, mapDispatchToProps)(MyComponent);
 
 For a full list of meta actions please see [`ReLikeMetaActions.js`](https://github.com/noman-land/relike-redux-middleware/blob/master/js/redux/actions/ReLikeMetaActions.js).
 
-To handle the individual actions in your reducers, This library exports a `ReLikeActionTypes` object:
+#### Handling the actions dispatched by the middelware
+
+To handle the individual actions in your reducers, This library exports a `ReLikeActionTypes` object. You can import this into your reducers and manipulate your state as you see fit.
 
 ```js
 import { Map } from 'immutable';
@@ -120,3 +128,40 @@ export default function pendingLikes(state = Map(), action) {
 ```
 
 For a full list of action types please see [`actionTypes.js`](https://github.com/noman-land/relike-redux-middleware/blob/master/js/redux/actions/actionTypes.js).
+
+#### Listening for events
+
+When the middleware is instantiated, it will dispatch actions for two kinds of events:
+
+1. The primary account of the user has been switched:
+
+```js
+const accountChangedEvent = {
+  type: '@@RELIKE/ACCOUNT_CHANGED_EVENT',
+  payload: {
+    newAccount: 0x0123456789abcdef0123456789abcdef01234567,
+  },
+};
+```
+2. A new "like" has been placed on the service:
+
+```js
+const newLikeEvent = {
+  type: '@@RELIKE/NEW_LIKE_EVENT',
+  payload: {
+    dislikes: 2,
+    entityId: 'ReLike',
+    likes: 7,
+    rating: 1,
+    user: 0x0123456789abcdef0123456789abcdef01234567,
+  },
+};
+
+```
+The possible ratings are:
+
+```
+0 = UNRATED
+1 = LIKE
+2 = DISLIKE
+```
