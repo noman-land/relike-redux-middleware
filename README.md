@@ -46,12 +46,15 @@ To handle the actions in your reducers, `relike-redux-middleware` exports a `ReL
 
 ```js
 import { Map } from 'immutable';
-import { ReLikeActionTypes } from 'relike-redux-middleware';
+import { ReLikeMetaActionTypes } from 'relike-redux-middleware';
 
 export default function pendingLikes(state = Map(), action) {
   switch (action.type) {
-    case ReLikeActionTypes.DISLIKE_START:
-      return state.setIn([action.payload.entityId, 'dislike'], true);
+    case ReLikeMetaActionTypes.LIKE_START:
+      return state.set(action.payload.entityId, true);
+    case ReLikeMetaActionTypes.LIKE_ERROR:
+    case ReLikeMetaActionTypes.LIKE_SUCCESS:
+      return state.set(action.payload.entityId, false);
     default:
       return state;
   }
