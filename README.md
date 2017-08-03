@@ -1,8 +1,10 @@
-# relike-redux-middleware
+# ReLikeMiddleware
 
 Redux middleware for interfacing with ReLike, the decentralized public liking service, powered by Ethereum.
 
 ### Documentation
+
+This middleware uses `ReLikeUtils` under the hood to send transactions to the ReLike smart contract on Ethereum. Please see documentation for [`ReLikeUtils` on GitHub](https://github.com/noman-land/relike-utils).
 
 ```js
 import { applyMiddleware, createStore } from 'redux';
