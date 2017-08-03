@@ -131,37 +131,35 @@ For a full list of action types please see [`actionTypes.js`](https://github.com
 
 #### Listening for events
 
-When the middleware is instantiated, it will dispatch actions for two kinds of events:
+When the middleware is instantiated, it will start listening and dispatch actions for two kinds of events:
 
 1. The primary account of the user has been switched:
+    ```js
+    const accountChangedEvent = {
+      type: '@@RELIKE/ACCOUNT_CHANGED_EVENT',
+      payload: {
+        newAccount: 0x0123456789abcdef0123456789abcdef01234567,
+      },
+    };
+    ```
 
-```js
-const accountChangedEvent = {
-  type: '@@RELIKE/ACCOUNT_CHANGED_EVENT',
-  payload: {
-    newAccount: 0x0123456789abcdef0123456789abcdef01234567,
-  },
-};
-```
 2. A new "like" has been placed on the service:
+    ```js
+    const newLikeEvent = {
+      type: '@@RELIKE/NEW_LIKE_EVENT',
+      payload: {
+        dislikes: 2,
+        entityId: 'ReLike',
+        likes: 7,
+        rating: 1,
+        user: 0x0123456789abcdef0123456789abcdef01234567,
+      },
+    };
 
-```js
-const newLikeEvent = {
-  type: '@@RELIKE/NEW_LIKE_EVENT',
-  payload: {
-    dislikes: 2,
-    entityId: 'ReLike',
-    likes: 7,
-    rating: 1,
-    user: 0x0123456789abcdef0123456789abcdef01234567,
-  },
-};
-
-```
-The possible ratings are:
-
-```
-0 = UNRATED
-1 = LIKE
-2 = DISLIKE
-```
+    ```
+    The possible ratings are:
+    ```
+    0 = UNRATED
+    1 = LIKE
+    2 = DISLIKE
+    ```
